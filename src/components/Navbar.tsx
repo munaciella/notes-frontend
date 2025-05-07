@@ -2,8 +2,9 @@ import Link from "next/link";
 import { SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-//import ThemeToggle from "./ThemeToggle";
 import logo from "../../public/logo.png";
+import ThemeToggle from "./theme/ThemeToggle";
+
 const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md transition-colors duration-300 bg-white/80 dark:bg-slate-900/80 shadow">
@@ -30,7 +31,7 @@ const Navbar = () => {
             >Dashboard</Button>
           </Link>
 
-            {/* <ThemeToggle /> */}
+            <ThemeToggle />
           <UserButton />
           <SignedOut>
             <SignInButton
