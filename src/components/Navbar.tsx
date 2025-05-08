@@ -24,11 +24,11 @@ const Navbar = () => {
 
         {/* Dashboard, Auth & Toggle */}
         <div className="flex items-center space-x-2 mr-2">
-          <Link href="/dashboard" passHref>
+          <Link href="/notes" passHref>
             <Button 
             variant="link"
             className="cursor-pointer"
-            >Dashboard</Button>
+            >Notes</Button>
           </Link>
 
             <ThemeToggle />
