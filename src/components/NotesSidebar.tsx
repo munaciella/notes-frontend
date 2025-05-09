@@ -15,6 +15,7 @@ import {
   SheetClose,
 } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
+import { useNotesRefresh } from '@/context/notes-refresh';
 
 interface Note {
   id: string;
@@ -23,9 +24,11 @@ interface Note {
 
 export function NotesSidebar() {
   const { getToken } = useAuth();
+  const pathname = usePathname();
+  const { refreshKey } = useNotesRefresh();
   const [notes, setNotes] = useState<Note[]>([]);
   const [q, setQ] = useState('');
-  const pathname = usePathname();
+  //const [open, setOpen] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -37,11 +40,12 @@ export function NotesSidebar() {
       );
       setNotes(data);
     })();
-  }, [q, getToken, pathname]);
+  }, [q, getToken, pathname, refreshKey]);
 
   // Raw sidebar UI, without SheetClose wrappers
   const SidebarContent = (
     <div className="p-6 flex flex-col h-full bg-white dark:bg-gray-900">
+        <h2 className="text-2xl font-semibold mb-4">My Notes</h2>
       <div className="mb-4 flex items-center gap-2">
         <Input
           placeholder="Search…"
@@ -90,6 +94,9 @@ export function NotesSidebar() {
                 </Button>
               </SheetClose>
               {/* Search + New Note */}
+              <div className="p-4 flex items-center gap-2">
+                <h2 className="text-2xl font-semibold mb-4">My Notes</h2>
+              </div>
               <div className="p-8 flex items-center gap-2">
                 <Input
                   placeholder="Search…"

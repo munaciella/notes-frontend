@@ -27,7 +27,6 @@ export function NoteEditor({
   const [tagInput, setTagInput] = useState('');
   const [saving, setSaving] = useState(false);
 
-  // This ref points at the same textarea your toolbar will edit
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const addTag = () => {
@@ -46,6 +45,8 @@ export function NoteEditor({
     <div className="grid grid-cols-1 md:grid-cols-2 h-screen md:h-full gap-4">
       {/* Editor Pane */}
       <div className="flex flex-col">
+        <h2 className="text-2xl font-semibold mb-4">Add a note</h2>
+
         {/* Title input */}
         <Input
           placeholder="Title"
@@ -116,7 +117,7 @@ export function NoteEditor({
       </div>
 
       {/* Preview Pane */}
-      <div className="prose max-w-none overflow-auto border p-4 rounded-lg h-96 md:h-full">
+      <div className="prose max-w-none overflow-auto border p-4 rounded-lg h-80 md:h-full">
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </div>

@@ -10,7 +10,12 @@ export async function fetcher<T>(
       },
       ...options,
     });
-    if (!res.ok) throw new Error(await res.text());
-    return res.json() as Promise<T>;
+    if (!res.ok) {
+      throw new Error(await res.text());
+    }
+    if (res.status === 204) {
+      return undefined as T;
+    }
+    return (await res.json()) as Promise<T>;
   }
   

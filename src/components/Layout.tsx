@@ -11,6 +11,7 @@ interface LayoutProps {
 export function TwoPaneLayout({ sidebar, children }: LayoutProps) {
   return (
     <div className="flex h-screen overflow-hidden">
+      <h2 className='hidden'>Two Pane Layout</h2>
       {/* DESKTOP ONLY */}
       <aside className="hidden md:flex w-80 border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <motion.div
