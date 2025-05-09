@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function NotesPage() {
   return (
-    <div className="h-full flex flex-col items-center justify-center text-gray-500 dark:text-gray-400">
+    <div className="mt-0 md:mt-2 h-full flex flex-col items-center justify-center text-gray-500 dark:text-gray-400">
       <h1 className="text-2xl font-semibold mb-2">
         Welcome to Bear-Like Notes
       </h1>
