@@ -16,6 +16,7 @@ const Navbar = () => {
             alt="Logo"
             width={60}
             height={60}
+            priority
           />
           <span className="text-lg font-bold text-gray-900 dark:text-white">
             Notes

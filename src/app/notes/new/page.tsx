@@ -21,7 +21,6 @@ export default function NewNotePage() {
   }) => {
     const token = await getToken();
     if (!token) return;
-    // fetcher extended to accept options
     const note = await fetcher<Note>(
       '/notes',
       token,
