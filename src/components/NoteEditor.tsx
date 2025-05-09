@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { MarkdownToolbar } from './MarkdownToolbar';
 
 const ReactMarkdown = dynamic(() => import('react-markdown'), { ssr: false });
 
@@ -26,9 +27,12 @@ export function NoteEditor({
   const [tagInput, setTagInput] = useState('');
   const [saving, setSaving] = useState(false);
 
+  // This ref points at the same textarea your toolbar will edit
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
   const addTag = () => {
     const t = tagInput.trim();
-    if (t && !tags.includes(t)) setTags([...tags, t]);
+    if (t && !tags.includes(t)) setTags((prev) => [...prev, t]);
     setTagInput('');
   };
 
@@ -39,21 +43,28 @@ export function NoteEditor({
   };
 
   return (
-    <div className="grid grid-cols-2 h-full gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 h-screen md:h-full gap-4">
       {/* Editor Pane */}
       <div className="flex flex-col">
+        {/* Title input */}
         <Input
           placeholder="Title"
           value={title}
-          onChange={e => setTitle(e.currentTarget.value)}
+          onChange={(e) => setTitle(e.currentTarget.value)}
           className="mb-2"
         />
+        {!title.trim() && (
+          <p className="text-red-500 text-sm mb-2">
+            Title is required
+            </p>
+            )}
 
+        {/* Tag input */}
         <div className="flex gap-2 mb-2">
           <Input
             placeholder="Add tag"
             value={tagInput}
-            onChange={e => setTagInput(e.currentTarget.value)}
+            onChange={(e) => setTagInput(e.currentTarget.value)}
           />
           <Button
             variant="outline"
@@ -64,8 +75,9 @@ export function NoteEditor({
           </Button>
         </div>
 
+        {/* Tag list */}
         <div className="mb-4 flex flex-wrap gap-1">
-          {tags.map(t => (
+          {tags.map((t) => (
             <span
               key={t}
               className="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded-full"
@@ -75,20 +87,36 @@ export function NoteEditor({
           ))}
         </div>
 
-        <textarea
-          placeholder="Write your markdown…"
-          value={content}
-          onChange={e => setContent(e.currentTarget.value)}
-          className="flex-1 w-full p-2 border rounded font-mono resize-none mb-4"
+        {/* **Markdown Toolbar** */}
+        <MarkdownToolbar
+          content={content}
+          setContent={setContent}
+          textareaRef={textareaRef}
         />
 
-        <Button onClick={handleSave} disabled={saving}>
+        {/* The main textarea */}
+        <textarea
+          ref={textareaRef}
+          placeholder="Write your markdown…"
+          value={content}
+          onChange={(e) => setContent(e.currentTarget.value)}
+          className="flex-1 w-full p-2 border rounded-lg font-mono resize-none mb-3"
+          rows={10}
+        />
+        {!content.trim() && (
+          <p className="text-red-500 text-sm mb-2">
+            Content is required
+          </p>
+        )}
+
+        {/* Save button */}
+        <Button onClick={handleSave} disabled={saving || !title.trim() || !content.trim()}>
           {saving ? 'Saving…' : 'Save'}
         </Button>
       </div>
 
       {/* Preview Pane */}
-      <div className="prose max-w-none overflow-auto border p-4 rounded">
+      <div className="prose max-w-none overflow-auto border p-4 rounded-lg h-96 md:h-full">
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </div>

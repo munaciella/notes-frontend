@@ -11,8 +11,8 @@ interface LayoutProps {
 export function TwoPaneLayout({ sidebar, children }: LayoutProps) {
   return (
     <div className="flex h-screen overflow-hidden">
-      {/* Sidebar */}
-      <aside className="w-80 border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+      {/* DESKTOP ONLY */}
+      <aside className="hidden md:flex w-80 border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -23,8 +23,14 @@ export function TwoPaneLayout({ sidebar, children }: LayoutProps) {
         </motion.div>
       </aside>
 
-      {/* Main content */}
-      <main className="flex-1 bg-gray-50 dark:bg-gray-800 overflow-y-auto">
+      {/* MAIN & MOBILE SHEET */}
+      <main className="relative flex-1 bg-gray-50 dark:bg-gray-800 overflow-y-auto">
+        {/* MOBILE: render the sheet trigger/drawer here */}
+        <div className="md:hidden">
+          {sidebar}
+        </div>
+
+        {/* Your actual page content */}
         <motion.div
           initial={{ x: 20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
