@@ -22,9 +22,10 @@ export default function NotesPage() {
       <Image
         width={200}
         height={200}
-        src="/note-placeholder.svg"
+        src="/nc-woman-typing-on-machine.png"
         alt="No note selected"
-        className="w-48 opacity-50"
+        className="w-56 opacity-70 mt-4 dark:invert"
+        priority
       />
     </div>
   );

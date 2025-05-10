@@ -73,6 +73,9 @@ function SheetContent({
       >
         <SheetHeader>
           <SheetTitle className="sr-only">Notes Sidebar</SheetTitle>
+          <SheetDescription className="sr-only">
+            This is a sidebar for your notes.
+            </SheetDescription>
         </SheetHeader>
 
         {children}

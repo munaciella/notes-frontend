@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,17 @@ export default function RootLayout({
             <Navbar />
 
             <main className="flex-grow px-4 pt-20 pb-28">{children}</main>
+
+            <Toaster
+              position="bottom-right"
+              richColors
+              closeButton
+              toastOptions={{
+                style: { fontSize: "16px" },
+                duration: 5000,
+              }}
+            />
+
           </ThemeProvider>
         </body>
       </html>
