@@ -100,7 +100,7 @@ export default function NoteDetailPage() {
             <DialogTrigger asChild>
               <Button variant="outline">Edit</Button>
             </DialogTrigger>
-            <DialogContent className="w-full sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+            <DialogContent className="w-full sm:max-w-lg md:max-w-xl lg:max-w-4xl">
               <DialogHeader>
                 <DialogTitle>Edit Note</DialogTitle>
                 <DialogDescription>Modify title, content or tags.</DialogDescription>

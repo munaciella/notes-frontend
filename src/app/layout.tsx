@@ -40,7 +40,7 @@ export default function RootLayout({
           >
             <Navbar />
 
-            <main className="flex-grow px-4 pt-20 pb-28">{children}</main>
+            <main className="flex-grow -mt-2 pt-28 pb-28">{children}</main>
 
             <Toaster
               position="bottom-right"

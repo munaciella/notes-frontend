@@ -10,16 +10,17 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md transition-colors duration-300 bg-white/80 dark:bg-slate-900/80 shadow">
       <div className="flex items-center justify-between px-2 md:px-4 py-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex flex-col items-center">
           <Image
             src={logo}
             alt="Logo"
-            width={60}
-            height={60}
+            width={50}
+            height={50}
             priority
+            className="dark:invert"
           />
-          <span className="text-lg font-bold text-gray-900 dark:text-white">
-            Notes
+          <span className="text-md font-bold text-gray-900 dark:text-white">
+            QuillNote
           </span>
         </Link>
 
