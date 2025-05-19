@@ -14,12 +14,12 @@ const Navbar = () => {
           <Image
             src={logo}
             alt="Logo"
-            width={50}
-            height={50}
+            width={60}
+            height={60}
             priority
             className="dark:invert"
           />
-          <span className="text-md font-bold text-gray-900 dark:text-white">
+          <span className="text-lg font-bold text-gray-900 dark:text-white">
             QuillNote
           </span>
         </Link>
@@ -29,7 +29,7 @@ const Navbar = () => {
           <Link href="/notes" passHref>
             <Button 
             variant="link"
-            className="cursor-pointer"
+            className="cursor-pointer font-semibold text-md"
             >Notes</Button>
           </Link>
 
