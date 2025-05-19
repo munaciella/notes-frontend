@@ -30,6 +30,19 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
+            {/* Demo Notice Disclaimer */}
+            <p
+              role="alert"
+              className="inline-block bg-red-100 px-4 py-2 rounded-md text-red-700 font-medium text-md"
+            >
+              <span className="mr-1">⚠️</span>
+              <strong>Demo Notice:</strong>{' '}
+              <span className="font-light">
+                This demo is provided solely for testing and development
+                purposes. Functionality may be limited or subject to sudden
+                service restrictions. Use at your own risk.
+              </span>
+            </p>
           </div>
           {/* Illustration */}
           <div className="w-full md:w-1/2 mb-10 md:mb-0 flex justify-center">
