@@ -17,7 +17,7 @@ export default function Home() {
               QuillNote
             </h1>
             <p className="text-lg text-muted-foreground max-w-lg mx-auto md:mx-0">
-              Capture your ideas in Markdown, organize with tags, and let AI
+              Capture your ideas in Markdown, organise with tags, and let AI
               generate concise summaries.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -66,7 +66,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard
               icon={<ListChecks className="h-8 w-8 text-primary" />}
-              title="Organize with Tags"
+              title="Organise with Tags"
             >
               Create and filter your notes by custom tags so you always find
               what you need.
@@ -75,7 +75,7 @@ export default function Home() {
               icon={<Sparkles className="h-8 w-8 text-primary" />}
               title="AI Summaries"
             >
-              Ask QuillNote to summarize any note in a neat paragraph with a
+              Ask QuillNote to summarise any note in a neat paragraph with a
               click.
             </FeatureCard>
             <FeatureCard
